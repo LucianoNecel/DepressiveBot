@@ -78,7 +78,6 @@ module.exports = {
 
         // Creamos un nuevo hilo en el canal de la taquilla
         await targetChannel.send({ content: `<@&${process.env.ROLE_ID_PELICULAS}> ¡Nueva película disponible: ${nombre}!`, embeds: [embed] });
-        console.log(`A PUNTO DE EXPORTAR: ${nombre}`);
         if (nombrex.length === 0) {
             nombrex.push(nombre);
         } else if(nombrex.length > 0){

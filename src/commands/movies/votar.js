@@ -1,6 +1,8 @@
 const { UserSelectMenuBuilder, ActionRowBuilder, ComponentType } = require('discord.js');
 const { nombrex } = require('./pelicula.js');
 const { bloquearHilo } = require('../../utils/bloquearHilo.js');
+const { slowmodeHilo } = require('../../utils/slowmodeHilo.js');
+
 
 module.exports = {
     name: 'votar',
@@ -45,7 +47,8 @@ module.exports = {
                     autoArchiveDuration: 60,
                     reason: 'Votación creada por ' + interaction.user.tag,
                 });
-
+                
+                slowmodeHilo(thread);
                 bloquearHilo(thread);
 
                 for (const userId of selectedUserIds) {
