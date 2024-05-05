@@ -1,6 +1,6 @@
 const { ApplicationCommandOptionType } = require('discord.js');
 const { EmbedBuilder } = require('discord.js');
-const { traducirCondicion } = require('../../traducirCondicion.js');
+const { traducirCondicion } = require('../../utils/traducirCondicion.js');
 const axios = require('axios');
 const API_KEY = process.env.API_KEY;
 

@@ -1,6 +1,6 @@
 const { UserSelectMenuBuilder, ActionRowBuilder, ComponentType } = require('discord.js');
 const { nombrex } = require('./pelicula.js');
-const { bloquearHilo } = require('../../bloquearHilo.js');
+const { bloquearHilo } = require('../../utils/bloquearHilo.js');
 
 module.exports = {
     name: 'votar',

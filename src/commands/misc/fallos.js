@@ -1,4 +1,4 @@
-const {cargarFallos} = require('../../cargarFallos.js');
+const {cargarFallos} = require('../../utils/cargarFallos.js');
 
 module.exports = {
     name: 'fallos',
