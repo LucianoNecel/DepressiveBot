@@ -1,7 +1,7 @@
 const { UserSelectMenuBuilder, ActionRowBuilder, ComponentType } = require('discord.js');
 const { nombrex } = require('./pelicula.js');
-const { bloquearHilo } = require('../../utils/bloquearHilo.js');
-const { slowmodeHilo } = require('../../utils/slowmodeHilo.js');
+const bloquearHilo = require('../../utils/bloquearHilo.js');
+const slowmodeHilo = require('../../utils/slowmodeHilo.js');
 
 
 module.exports = {
@@ -58,13 +58,12 @@ module.exports = {
                     }
                 }
 
-                await thread.send(`Se seleccionaron los siguientes miembros para votar: ${selectedUsersText}`);
+                await thread.send(`¿Qué puntaje le dan a la película "${nombrex}"?`);
 
                 await interaction.reply({
                 content: `Se ha creado un hilo para votar en el canal ${channel} con el nombre "${threadName}".`,
                 ephemeral: true,
                 });
-                console.log(nombrex);
             });
         } catch (error) {
             console.error('Error al responder la interacción:', error);

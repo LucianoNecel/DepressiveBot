@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { quitarRolContador } = require('./utils/quitarRolContador.js');
+const quitarRolContador = require('./utils/quitarRolContador.js');
 const eventHandler = require('./handlers/eventHandler');
 const { Client, IntentsBitField } = require('discord.js');
 const client = new Client({
@@ -11,7 +11,7 @@ const client = new Client({
   ],
 });
 
-eventHandler(client);
 quitarRolContador(client);
+eventHandler(client);
 
 client.login(process.env.TOKEN);
