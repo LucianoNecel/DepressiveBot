@@ -9,11 +9,7 @@ module.exports = async (client, message) => {
 	try {
 		if (message.author.bot) return;
 		if (message.content.startsWith(IGNORE_PREFIX)) return;
-		if (
-			!CHANNELS.includes(message.channelId) &&
-			!message.mentions.users.has(client.user.id)
-		)
-			return;
+		if (message.channel.id !== process.env.CHANNEL_ID_CHATBOT) return;
 
 		const messageContent = message.content;
 
