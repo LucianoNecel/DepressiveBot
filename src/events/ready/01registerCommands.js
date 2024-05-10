@@ -4,53 +4,53 @@ const getApplicationCommands = require('../../utils/getApplicationCommands');
 const getLocalCommands = require('../../utils/getLocalCommands');
 
 module.exports = async (client) => {
-  try {
-    const localCommands = getLocalCommands();
-    const applicationCommands = await getApplicationCommands(
-      client,
-      testServer
-    );
+	try {
+		const localCommands = getLocalCommands();
+		const applicationCommands = await getApplicationCommands(
+			client,
+			testServer
+		);
 
-    for (const localCommand of localCommands) {
-      const { name, description, options } = localCommand;
+		for (const localCommand of localCommands) {
+			const { name, description, options } = localCommand;
 
-      const existingCommand = await applicationCommands.cache.find(
-        (cmd) => cmd.name === name
-      );
+			const existingCommand = await applicationCommands.cache.find(
+				(cmd) => cmd.name === name
+			);
 
-      if (existingCommand) {
-        if (localCommand.deleted) {
-          await applicationCommands.delete(existingCommand.id);
-          console.log(`🗑 Se eliminó el comando "${name}".`);
-          continue;
-        }
+			if (existingCommand) {
+				if (localCommand.deleted) {
+					await applicationCommands.delete(existingCommand.id);
+					console.log(`🗑 Se eliminó el comando "${name}".`);
+					continue;
+				}
 
-        if (areCommandsDifferent(existingCommand, localCommand)) {
-          await applicationCommands.edit(existingCommand.id, {
-            description,
-            options,
-          });
+				if (areCommandsDifferent(existingCommand, localCommand)) {
+					await applicationCommands.edit(existingCommand.id, {
+						description,
+						options,
+					});
 
-          console.log(`🔁 Se editó el comando "${name}".`);
-        }
-      } else {
-        if (localCommand.deleted) {
-          console.log(
-            `⏩ Se saltó el registro del comando "${name}" ya que está establecido para borrar.`
-          );
-          continue;
-        }
+					console.log(`🔁 Se editó el comando "${name}".`);
+				}
+			} else {
+				if (localCommand.deleted) {
+					console.log(
+						`⏩ Se saltó el registro del comando "${name}" ya que está establecido para borrar.`
+					);
+					continue;
+				}
 
-        await applicationCommands.create({
-          name,
-          description,
-          options,
-        });
+				await applicationCommands.create({
+					name,
+					description,
+					options,
+				});
 
-        console.log(`👍 Se registró el comando "${name}."`);
-      }
-    }
-  } catch (error) {
-    console.log(`Hubo un error: ${error}`);
-  }
+				console.log(`👍 Se registró el comando "${name}."`);
+			}
+		}
+	} catch (error) {
+		console.log(`Hubo un error: ${error}`);
+	}
 };
