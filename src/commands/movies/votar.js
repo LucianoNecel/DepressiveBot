@@ -3,7 +3,6 @@ const { nombrex } = require('./pelicula.js');
 const bloquearHilo = require('../../utils/bloquearHilo.js');
 const slowmodeHilo = require('../../utils/slowmodeHilo.js');
 
-
 module.exports = {
     name: 'votar',
     description: 'Elegir miembros que puedan votar la película.',
@@ -32,9 +31,8 @@ module.exports = {
 
             collector.on('collect', async (interaction) => {
                 const selectedUserIds = interaction.values;
-                const selectedUsers = selectedUserIds.map((userId) => interaction.guild.members.cache.get(userId));
-                const selectedUserTags = selectedUsers.map((user) => user ? user.user.tag : 'Miembro no encontrado.');
-                const selectedUsersText = selectedUserTags.join(', ');
+                //const selectedUsers = selectedUserIds.map((userId) => interaction.guild.members.cache.get(userId));
+                //const selectedUserTags = selectedUsers.map((user) => user ? user.user.tag : 'Miembro no encontrado.');
                 const channel = interaction.guild.channels.cache.get(process.env.CHANNEL_ID_TAQUILLA);
 
                 if (!channel) {

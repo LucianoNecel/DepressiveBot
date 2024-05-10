@@ -1,4 +1,4 @@
-const { ActivityType } = require('discord.js');
+const { ActivityType, time } = require('discord.js');
 
 module.exports = (client) => {
     console.log(`✅ ${client.user.tag} está en línea!`);
