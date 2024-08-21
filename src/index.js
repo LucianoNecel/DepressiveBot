@@ -8,10 +8,10 @@ const client = new Client({
 		IntentsBitField.Flags.GuildMembers,
 		IntentsBitField.Flags.GuildMessages,
 		IntentsBitField.Flags.MessageContent,
+		IntentsBitField.Flags.GuildVoiceStates,
+		IntentsBitField.Flags.GuildPresences,
 	],
 });
-
 quitarRolContador(client);
 eventHandler(client);
-
 client.login(process.env.TOKEN);

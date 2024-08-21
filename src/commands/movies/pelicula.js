@@ -1,6 +1,5 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 let nombrex = [];
-
 module.exports = {
 	name: 'pelicula',
 	description: 'Subir película a la taquilla.',
@@ -37,7 +36,6 @@ module.exports = {
 			required: true,
 		},
 	],
-
 	callback: async (client, interaction) => {
 		const nombre = interaction.options.getString('nombre');
 		const dia = interaction.options.getString('día');
@@ -47,15 +45,11 @@ module.exports = {
 		const propuestaPorNombre = interaction.user.tag;
 		const propuestaPorFoto = interaction.user.displayAvatarURL();
 		const voiceChannelId = process.env.CHANNEL_ID_CINEMAX;
-
-		// Comprobamos si se han proporcionado todos los valores
 		if (!nombre || !dia || !hora || !trama || !imagen) {
 			return interaction.reply(
 				'Por favor, proporciona el nombre, el día, la hora, la trama y la imagen de la película.'
 			);
 		}
-
-		// Creamos un objeto EmbedBuilder
 		const embed = new EmbedBuilder()
 			.setTitle(`__**Película:**__ ${nombre}`)
 			.setDescription(
@@ -66,30 +60,20 @@ module.exports = {
 				text: `Propuesta por: ${propuestaPorNombre}`,
 				iconURL: `${propuestaPorFoto}`,
 			});
-
-		// Añadimos la imagen al objeto EmbedBuilder si se ha proporcionado
 		if (imagen) {
 			embed.setImage(imagen);
 		}
-
-		// Respondemos a la interacción con el objeto EmbedBuilder
 		await interaction.reply({
 			content: `¡La película "${nombre}" fue enviada!`,
 			ephemeral: true,
 		});
-
-		// Obtenemos el canal de la taquilla
 		const targetChannel = interaction.guild.channels.cache.get(
 			process.env.CHANNEL_ID_TAQUILLA
 		);
-
-		// Comprobamos si se ha encontrado el canal
 		if (!targetChannel) {
 			console.error('Error al enviar el mensaje: Canal no encontrado.');
 			return;
 		}
-
-		// Creamos un nuevo hilo en el canal de la taquilla
 		await targetChannel.send({
 			content: `<@&${process.env.ROLE_ID_PELICULAS}> ¡Nueva película disponible: ${nombre}!`,
 			embeds: [embed],

@@ -1,6 +1,5 @@
 require('dotenv').config();
 const { saludoAleatorio } = require('../../utils/saludoAleatorio.js');
-
 module.exports = async (client, message) => {
 	try {
 		if (!message.author.bot) {

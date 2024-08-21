@@ -1,10 +1,8 @@
 const { FastType } = require('discord-gamecord');
 const { oracionAleatoria } = require('../../utils/oracionAleatoria');
-
 module.exports = {
 	name: 'mecanografia',
 	description: 'Jugá a completar el texto antes que termine el tiempo!',
-
 	callback: async (client, interaction) => {
 		const oracion = oracionAleatoria();
 		const partida = new FastType({

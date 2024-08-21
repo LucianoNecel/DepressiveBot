@@ -1,9 +1,7 @@
 const { Minesweeper } = require('discord-gamecord');
-
 module.exports = {
 	name: 'buscaminas',
 	description: 'Jugá al buscaminas!',
-
 	callback: async (client, interaction) => {
 		const partida = new Minesweeper({
 			message: interaction,

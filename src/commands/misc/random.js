@@ -1,5 +1,4 @@
 const { ApplicationCommandOptionType } = require('discord.js');
-
 module.exports = {
 	name: 'random',
 	description: 'Elegí un número aleatorio dentro de un rango específico.',
@@ -17,11 +16,9 @@ module.exports = {
 			required: false,
 		},
 	],
-
 	callback: async (client, interaction) => {
 		const minimo = interaction.options.getInteger('mínimo') || 0;
 		const maximo = interaction.options.getInteger('máximo') || 100;
-
 		if (minimo >= maximo) {
 			await interaction.deferReply({ ephemeral: true });
 			await interaction.editReply({
@@ -32,10 +29,8 @@ module.exports = {
 		} else {
 			await interaction.deferReply({ ephemeral: false });
 		}
-
 		const numeroAleatorio =
 			Math.floor(Math.random() * (maximo - minimo + 1)) + minimo;
-
 		await interaction.editReply({
 			content: `Número aleatorio entre ${minimo} y ${maximo}: ${numeroAleatorio}`,
 			ephemeral: false,

@@ -8,5 +8,4 @@ function saludoAleatorio() {
 	const indice = Math.floor(Math.random() * saludos.length);
 	return saludos[indice];
 }
-
 module.exports = { saludoAleatorio };

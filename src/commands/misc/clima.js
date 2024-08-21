@@ -1,9 +1,7 @@
-const { ApplicationCommandOptionType } = require('discord.js');
-const { EmbedBuilder } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { traducirCondicion } = require('../../utils/traducirCondicion.js');
 const axios = require('axios');
-const API_KEY = process.env.API_KEY;
-
+const API_KEY = process.env.API_KEY_WEATHERAPI;
 module.exports = {
 	name: 'clima',
 	description: 'Muestra el clima de la ciudad especificada.',
@@ -15,12 +13,9 @@ module.exports = {
 			required: true,
 		},
 	],
-
 	callback: async (client, interaction) => {
 		await interaction.deferReply();
-
 		const ciudad = interaction.options.getString('ciudad').toLowerCase();
-
 		if (!ciudad) {
 			await interaction.editReply('Por favor, especifica una ciudad.');
 			return;

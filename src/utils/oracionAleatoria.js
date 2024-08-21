@@ -106,5 +106,4 @@ function oracionAleatoria() {
 	const indice = Math.floor(Math.random() * oraciones.length);
 	return oraciones[indice];
 }
-
 module.exports = { oracionAleatoria };

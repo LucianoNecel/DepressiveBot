@@ -1,7 +1,6 @@
 require('dotenv').config();
 const { cargarFallos } = require('../../utils/cargarFallos.js');
 const { guardarFallos } = require('../../utils/guardarFallos.js');
-
 module.exports = async (client, message) => {
 	try {
 		if (message.channel.id === process.env.CHANNEL_ID_CONTADOR) {
@@ -13,11 +12,9 @@ module.exports = async (client, message) => {
 				const finMensaje = message.content.indexOf('>');
 				const idUsuario = message.content.slice(inicioMensaje, finMensaje);
 				const usuarioQueFallo = message.guild.members.cache.get(idUsuario);
-
 				if (usuarioQueFallo) {
 					const nombreUsuario = usuarioQueFallo.user.username;
 					let fallos = cargarFallos();
-
 					if (!fallos[nombreUsuario]) {
 						fallos[nombreUsuario] = 1;
 					} else {

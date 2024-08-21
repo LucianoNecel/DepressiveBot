@@ -1,7 +1,6 @@
 const { HarmCategory, HarmBlockThreshold } = require('@google/generative-ai');
-
 module.exports.config = {
-	modelName: 'gemini-pro',
+	modelName: 'gemini-1.5-flash',
 	safetySettings: [
 		{
 			category: HarmCategory.HARM_CATEGORY_HARASSMENT,

@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-
 const fallosFilePath = path.join(__dirname, 'fallos.json');
 function cargarFallos() {
 	try {
@@ -10,5 +9,4 @@ function cargarFallos() {
 		return {};
 	}
 }
-
 module.exports = { cargarFallos };

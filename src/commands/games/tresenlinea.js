@@ -1,6 +1,5 @@
 const { TicTacToe } = require('discord-gamecord');
 const { ApplicationCommandOptionType } = require('discord.js');
-
 module.exports = {
 	name: 'tresenlinea',
 	description: 'Jugá al tres en línea!',
@@ -12,7 +11,6 @@ module.exports = {
 			required: true,
 		},
 	],
-
 	callback: async (client, interaction) => {
 		const partida = new TicTacToe({
 			message: interaction,
@@ -35,7 +33,7 @@ module.exports = {
 			oButtonStyle: 'PRIMARY',
 			turnMessage: '{emoji} | Es el turno de **{player}**.',
 			winMessage: '{emoji} | **{player}** ganó la partida.',
-			tieMessage: 'La partida empató, nadie ganó!',
+			tieMessage: 'La partida empató!',
 			timeoutMessage: 'La partida no se terminó, nadie ganó!',
 			playerOnlyMessage: 'Solo {player} y {opponent} pueden usar los botones.',
 		});

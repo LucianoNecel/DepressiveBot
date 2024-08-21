@@ -21,10 +21,9 @@ const traduccionesCondicion = {
 	Sandstorm: 'Tormenta de arena',
 	'Light rain': 'Lluvia leve',
 	'Freezing fog': 'Niebla helada',
+	'Light drizzle': 'Llovizna ligera',
 };
-
 function traducirCondicion(condicion) {
 	return traduccionesCondicion[condicion] || condicion;
 }
-
 module.exports = { traducirCondicion };
