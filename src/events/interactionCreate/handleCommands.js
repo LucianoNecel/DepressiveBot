@@ -1,5 +1,6 @@
-const { devs, testServer } = require('../../../config.json');
 const getLocalCommands = require('../../utils/getLocalCommands');
+const server = process.env.GUILD_ID;
+const devs = process.env.DEVS_ID;
 module.exports = async (client, interaction) => {
 	if (!interaction.isChatInputCommand()) return;
 	const localCommands = getLocalCommands();
@@ -18,7 +19,7 @@ module.exports = async (client, interaction) => {
 			}
 		}
 		if (commandObject.testOnly) {
-			if (!(interaction.guild.id === testServer)) {
+			if (!(interaction.guild.id === server)) {
 				interaction.reply({
 					content: 'Este comando no se puede ejecutar acá.',
 					ephemeral: true,

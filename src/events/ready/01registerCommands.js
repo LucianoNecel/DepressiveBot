@@ -1,14 +1,11 @@
-const { testServer } = require('../../../config.json');
 const areCommandsDifferent = require('../../utils/areCommandsDifferent');
 const getApplicationCommands = require('../../utils/getApplicationCommands');
 const getLocalCommands = require('../../utils/getLocalCommands');
+const server = process.env.GUILD_ID;
 module.exports = async (client) => {
 	try {
 		const localCommands = getLocalCommands();
-		const applicationCommands = await getApplicationCommands(
-			client,
-			testServer
-		);
+		const applicationCommands = await getApplicationCommands(client, server);
 		for (const localCommand of localCommands) {
 			const { name, description, options } = localCommand;
 			const existingCommand = await applicationCommands.cache.find(
